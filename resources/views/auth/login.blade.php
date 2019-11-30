@@ -10,7 +10,7 @@
          <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
          @if ($errors->has('email'))
          <span class="help-block">
-         <strong>{{ $errors->first('email') }}</strong>
+            <strong>{{ $errors->first('email') }}</strong>
          </span>
          @endif
       </div>
@@ -19,19 +19,13 @@
          <input id="password" type="password" class="form-control" name="password" required>
          @if ($errors->has('password'))
          <span class="help-block">
-         <strong>{{ $errors->first('password') }}</strong>
+            <strong>{{ $errors->first('password') }}</strong>
          </span>
          @endif
-      </div>		<div class="form-group">        <a href="{{ route('password.request') }}">        Forgot Your Password ?        </a>      </div>
-      <div class="form-group-checkbox">
-         <input type="checkbox" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
-         <label for="remember"> Remember Me
-         </label>
       </div>
-     <div class="form-group">
-        <input type="submit" name="submit" value="Login"  />
-        </div>
-        	  	  <div class="form-group">        <a href="{{ route('register') }}">        Don't have account ?        </a>      </div>
-</form>
+      <div class="form-group">
+         <input type="submit" name="submit" value="Login" />
+      </div>
+   </form>
 </div>
 @endsection

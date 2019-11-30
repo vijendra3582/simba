@@ -35,6 +35,22 @@ Route::get('user/edit/{id}', ['uses' => 'Admin\UserController@edit', 'as' => 'ad
 Route::put('user/update', ['uses' => 'Admin\UserController@update', 'as' => 'admin.user.update']);
 Route::delete('user/delete/{id}', ['uses' => 'Admin\UserController@destroy', 'as' => 'admin.user.delete']);
 
+//Categories Routes
+Route::get('categories', ['uses' => 'Admin\CategoryController@index', 'as' => 'admin.category']);
+Route::get('category/create', ['uses' => 'Admin\CategoryController@create', 'as' => 'admin.category.create']);
+Route::post('category/store', ['uses' => 'Admin\CategoryController@store', 'as' => 'admin.category.store']);
+Route::get('category/edit/{id}', ['uses' => 'Admin\CategoryController@edit', 'as' => 'admin.category.edit']);
+Route::put('category/update', ['uses' => 'Admin\CategoryController@update', 'as' => 'admin.category.update']);
+Route::delete('category/delete/{id}', ['uses' => 'Admin\CategoryController@destroy', 'as' => 'admin.category.delete']);
+
+//Designations Routes
+Route::get('designations', ['uses' => 'Admin\DesignationController@index', 'as' => 'admin.designation']);
+Route::get('designation/create', ['uses' => 'Admin\DesignationController@create', 'as' => 'admin.designation.create']);
+Route::post('designation/store', ['uses' => 'Admin\DesignationController@store', 'as' => 'admin.designation.store']);
+Route::get('designation/edit/{id}', ['uses' => 'Admin\DesignationController@edit', 'as' => 'admin.designation.edit']);
+Route::put('designation/update', ['uses' => 'Admin\DesignationController@update', 'as' => 'admin.designation.update']);
+Route::delete('designation/delete/{id}', ['uses' => 'Admin\DesignationController@destroy', 'as' => 'admin.designation.delete']);
+
 //Roles Routes
 Route::get('roles', ['uses' => 'Admin\RoleController@index', 'as' => 'admin.role']);
 Route::get('role/create', ['uses' => 'Admin\RoleController@create', 'as' => 'admin.role.create']);

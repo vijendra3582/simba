@@ -38,6 +38,44 @@
 	  </div>
 	</li>
 	@endcan
+	@can('view category')
+	<li class="nav-item">
+	  <a class="nav-link" data-toggle="collapse" href="#categorys" aria-expanded="{{ $request->segment(1) == 'categorys' ? 'true' : 'false' }}" aria-controls="ui-basic">
+		<span class="menu-title">Categories</span>
+		<i class="menu-arrow"></i>
+		<i class="mdi mdi-account-multiple menu-icon"></i>
+	  </a>
+	  <div class="collapse {{ $request->segment(1) == 'categorys' ? 'show' : '' }}" id="categorys">
+		<ul class="nav flex-column sub-menu">
+		  @can('create category')
+			<li class="nav-item"> <a class="nav-link" href="{{ route('admin.category.create') }}">New Category</a></li>
+		  @endcan
+		  @can('view category')
+		  <li class="nav-item"> <a class="nav-link" href="{{ route('admin.category') }}">Manage Categories</a></li>
+		  @endcan
+		</ul>
+	  </div>
+	</li>
+	@endcan
+	@can('view designation')
+	<li class="nav-item">
+	  <a class="nav-link" data-toggle="collapse" href="#designations" aria-expanded="{{ $request->segment(1) == 'designations' ? 'true' : 'false' }}" aria-controls="ui-basic">
+		<span class="menu-title">Designations</span>
+		<i class="menu-arrow"></i>
+		<i class="mdi mdi-account-multiple menu-icon"></i>
+	  </a>
+	  <div class="collapse {{ $request->segment(1) == 'designations' ? 'show' : '' }}" id="designations">
+		<ul class="nav flex-column sub-menu">
+		  @can('create designation')
+			<li class="nav-item"> <a class="nav-link" href="{{ route('admin.designation.create') }}">New Designation</a></li>
+		  @endcan
+		  @can('view designation')
+		  <li class="nav-item"> <a class="nav-link" href="{{ route('admin.designation') }}">Manage Designations</a></li>
+		  @endcan
+		</ul>
+	  </div>
+	</li>
+	@endcan
 	@can('view permission')
 	<li class="nav-item">
 	  <a class="nav-link" data-toggle="collapse" href="#permission" aria-expanded="{{ $request->segment(1) == 'permissions' ? 'true' : 'false' }}" aria-controls="ui-basic">
