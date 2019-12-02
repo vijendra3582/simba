@@ -32,7 +32,7 @@ class ProfileController extends Controller
         $user = User::find(Auth::user()->id);
         $avatar = $user->avatar;
         if ($request->hasFile('avatar')) {
-            $avatar = $this->saveImage($request->avatar);
+            $avatar = $this->saveAvatar($request->avatar);
         }
 
         $user->name = $request->name;

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Traits;
 
 use Illuminate\Support\Facades\Storage;
-use Auth;
 use Illuminate\Support\Str;
 
 trait FileUploadTrait
