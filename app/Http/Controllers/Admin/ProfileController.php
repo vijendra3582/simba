@@ -6,9 +6,11 @@ use Auth;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\FileUploadTrait;
 
 class ProfileController extends Controller
-{
+{   
+    use FileUploadTrait;
     public function __construct()
     {
         $this->middleware(['auth']);
