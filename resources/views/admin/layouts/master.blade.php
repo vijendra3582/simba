@@ -11,11 +11,7 @@
 	<link href="{{ asset('assets/vendors/select2/css/select2.min.css') }}" rel="stylesheet" />
 	<link rel="stylesheet" href="{{ URL::asset('assets/css/style.css') }}">
 	<link rel="shortcut icon" href="https://laravel.com/img/favicon/favicon.ico" />
-    <script>
-        window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]) !!};
-    </script>
+	<script src="{{ URL::asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
 	<style>
 		.edit-tabel {
 			float: left;
@@ -43,7 +39,7 @@
 		.form-group label {
 			float: left;
 			width: 100%;
-			font-weight: 500;
+			font-weight: 600;
 		}
 		input.btn {
 			padding: 9px 31px;
@@ -113,7 +109,6 @@
         @endif 
         @include ('errors.list') {{-- Including error file --}}
 	</div>
-	<script src="{{ URL::asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
 	<script src="{{ asset('assets/vendors/select2/js/select2.min.js') }}"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){

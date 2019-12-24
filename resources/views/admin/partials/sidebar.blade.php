@@ -38,12 +38,31 @@
 	  </div>
 	</li>
 	@endcan
+	@can('view vendor')
+	<li class="nav-item">
+	  <a class="nav-link" data-toggle="collapse" href="#vendors" aria-expanded="{{ $request->segment(1) == 'vendors' ? 'true' : 'false' }}" aria-controls="ui-basic">
+		<span class="menu-title">Vendors</span>
+		<i class="menu-arrow"></i>
+		<i class="mdi mdi-bike menu-icon"></i>
+	  </a>
+	  <div class="collapse {{ $request->segment(1) == 'vendors' ? 'show' : '' }}" id="vendors">
+		<ul class="nav flex-column sub-menu">
+		  @can('create vendor')
+			<li class="nav-item"> <a class="nav-link" href="{{ route('admin.vendor.create') }}">New Vendor</a></li>
+		  @endcan
+		  @can('view vendor')
+		  <li class="nav-item"> <a class="nav-link" href="{{ route('admin.vendor') }}">Manage Vendor</a></li>
+		  @endcan
+		</ul>
+	  </div>
+	</li>
+	@endcan
 	@can('view category')
 	<li class="nav-item">
 	  <a class="nav-link" data-toggle="collapse" href="#categorys" aria-expanded="{{ $request->segment(1) == 'categorys' ? 'true' : 'false' }}" aria-controls="ui-basic">
 		<span class="menu-title">Categories</span>
 		<i class="menu-arrow"></i>
-		<i class="mdi mdi-account-multiple menu-icon"></i>
+		<i class="mdi mdi-format-list-bulleted-type menu-icon"></i>
 	  </a>
 	  <div class="collapse {{ $request->segment(1) == 'categorys' ? 'show' : '' }}" id="categorys">
 		<ul class="nav flex-column sub-menu">
@@ -62,7 +81,7 @@
 	  <a class="nav-link" data-toggle="collapse" href="#designations" aria-expanded="{{ $request->segment(1) == 'designations' ? 'true' : 'false' }}" aria-controls="ui-basic">
 		<span class="menu-title">Designations</span>
 		<i class="menu-arrow"></i>
-		<i class="mdi mdi-account-multiple menu-icon"></i>
+		<i class="mdi mdi-guitar-pick-outline menu-icon"></i>
 	  </a>
 	  <div class="collapse {{ $request->segment(1) == 'designations' ? 'show' : '' }}" id="designations">
 		<ul class="nav flex-column sub-menu">
@@ -71,6 +90,25 @@
 		  @endcan
 		  @can('view designation')
 		  <li class="nav-item"> <a class="nav-link" href="{{ route('admin.designation') }}">Manage Designations</a></li>
+		  @endcan
+		</ul>
+	  </div>
+	</li>
+	@endcan
+	@can('view question')
+	<li class="nav-item">
+	  <a class="nav-link" data-toggle="collapse" href="#questions" aria-expanded="{{ $request->segment(1) == 'questions' ? 'true' : 'false' }}" aria-controls="ui-basic">
+		<span class="menu-title">Questions</span>
+		<i class="menu-arrow"></i>
+		<i class="mdi mdi-comment-question-outline menu-icon"></i>
+	  </a>
+	  <div class="collapse {{ $request->segment(1) == 'questions' ? 'show' : '' }}" id="questions">
+		<ul class="nav flex-column sub-menu">
+		  @can('create question')
+			<li class="nav-item"> <a class="nav-link" href="{{ route('admin.question.create') }}">New Question</a></li>
+		  @endcan
+		  @can('view question')
+		  <li class="nav-item"> <a class="nav-link" href="{{ route('admin.question') }}">Manage Questions</a></li>
 		  @endcan
 		</ul>
 	  </div>

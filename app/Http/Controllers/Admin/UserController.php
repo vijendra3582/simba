@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\User;
-use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
 use App\Http\Controllers\AuthorizationController;
 use App\Http\Controllers\Traits\FileUploadTrait;
 use App\Http\Requests\UserCreateRequest;
@@ -28,7 +26,7 @@ class UserController extends AuthorizationController
     {	
 		$this->checkPermission('view user');
 		
-        $users = User::paginate(20);
+        $users = User::whereRole('user')->paginate(20);
         
 		return view('admin.user.index')->with(['users' => $users, 'title' => 'Manage Users']);
     }

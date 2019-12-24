@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\AuthorizationController;
+use App\Models\SecurityQuestion;
 
 class SecurityQuestionController extends AuthorizationController
 {
@@ -18,11 +19,11 @@ class SecurityQuestionController extends AuthorizationController
      */
     public function index()
     {
-		$this->checkPermission('view designation');
+		$this->checkPermission('view question');
 		
-        $designations = Designation::paginate(20);
+        $questions = SecurityQuestion::paginate(20);
 
-        return view('admin.designation.index')->with(['designations' => $designations, 'title' => 'Manage Designations']);
+        return view('admin.question.index')->with(['questions' => $questions, 'title' => 'Manage Questions']);
     }
 
     /**
@@ -32,9 +33,9 @@ class SecurityQuestionController extends AuthorizationController
      */
     public function create()
     {
-		$this->checkPermission('create designation');
+		$this->checkPermission('create question');
 		
-        return view('admin.designation.create', ['title' => 'Create Designation']);
+        return view('admin.question.create', ['title' => 'Create Question']);
     }
 
     /**
@@ -45,20 +46,20 @@ class SecurityQuestionController extends AuthorizationController
      */
     public function store(Request $request)
     {
-		$this->checkPermission('create designation');
+		$this->checkPermission('create question');
 		
         $this->validate($request, [
-            'name'=>'required|unique:designations|string|max:255'
+            'question'=>'required|unique:security_questions|string|max:255'
         ]
         );
 
-        $designation = new Designation();
-        $designation->name = $request->name;
-        $designation->save();
+        $question = new SecurityQuestion();
+        $question->question = $request->question;
+        $question->save();
 
-        return redirect()->route('admin.designation')
+        return redirect()->route('admin.question')
             ->with('flash_message',
-             'Designation'. $designation->name.' added !');
+             'Question '. $question->question.' added !');
     }
 
     /**
@@ -69,11 +70,11 @@ class SecurityQuestionController extends AuthorizationController
      */
     public function edit($id)
     {
-		$this->checkPermission('edit designation');
+		$this->checkPermission('edit question');
 		
-        $designation = Designation::findOrFail($id);
+        $question = SecurityQuestion::findOrFail($id);
 
-        return view('admin.designation.edit',['designation' => $designation, 'title' => 'Edit Designation : '.$designation->name]);
+        return view('admin.question.edit',['question' => $question, 'title' => 'Edit Question : '.$question->question]);
     }
 
     /**
@@ -85,20 +86,20 @@ class SecurityQuestionController extends AuthorizationController
      */
     public function update(Request $request)
     {
-		$this->checkPermission('edit designation');
+		$this->checkPermission('edit question');
 		$id = $request->id;
-        $designation = Designation::findOrFail($id);
+        $question = SecurityQuestion::findOrFail($id);
 
         $this->validate($request, [
-            'name'=>'required|string|max:255|unique:designations,name,'.$id,
+            'question'=>'required|string|max:255|unique:security_questions,question,'.$id,
         ]);
         
-        $designation->name = $request->name;
-        $designation->save();
+        $question->question = $request->question;
+        $question->save();
 
-        return redirect()->route('admin.designation')
+        return redirect()->route('admin.question')
             ->with('flash_message',
-             'Designation'. $designation->name.' updated!');
+             'Question '. $question->question.' updated !');
     }
 
     /**
@@ -109,13 +110,13 @@ class SecurityQuestionController extends AuthorizationController
      */
     public function destroy($id)
     {
-		$this->checkPermission('delete designation');
+		$this->checkPermission('delete question');
 		
-        $designation = Designation::findOrFail($id);
-        $designation->delete();
+        $question = SecurityQuestion::findOrFail($id);
+        $question->delete();
 
-        return redirect()->route('admin.designation')
+        return redirect()->route('admin.question')
             ->with('flash_message',
-             'Designation deleted!');
+             'Question deleted !');
     }
 }

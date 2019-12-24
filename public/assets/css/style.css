@@ -17165,4 +17165,29 @@ span.select2-selection.select2-selection--single:focus {
 input[type="file"] {
   padding: 8px !important;
 }
+
+.form-group-half {
+  float: left;
+  width: 42%;
+  margin-right: 1.64rem;
+  margin-top: 1rem;
+}
+
+span.button-chota {
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2.1rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+hr {
+  float: left;
+  /* border-width: 13px; */
+  border: 1px solid;
+  width: 100%;
+}
+
 /*# sourceMappingURL=style.css.map */

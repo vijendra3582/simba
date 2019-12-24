@@ -5,8 +5,9 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Http\Request;
 
-class UserCreateRequest extends FormRequest
+class VendorCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,10 +32,13 @@ class UserCreateRequest extends FormRequest
             'contact' => ['required', 'numeric', 'digits:10'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'city' => ['required', 'string', 'max:255'],
-            'dob' => ['required', 'date'],
-            'security_question_id' => ['required', 'numeric'],
-            'security_question_answer' => ['required', 'string', 'max:255'],
-            'avatar' => ['required', 'mimes:jpg,jpeg,png,gif']
+            'avatar' => ['required', 'mimes:jpg,jpeg,png,gif'],
+            'category_id' => ['required'],
+            'designation_id' => ['required'],
+            'discount' => ['required'],
+            'registration_tenure' => ['required'],
+            'registration_details_title' => ['required'],
+            'registration_details_file' => ['required'],
         ];
     }
 
@@ -46,14 +50,18 @@ class UserCreateRequest extends FormRequest
             'contact' => 'contact',
             'password' => 'password',
             'city' => 'city',
-            'dob' => 'date of birth',
-            'security_question_id' => 'security question',
-            'security_question_answer' => 'security answer',
-            'avatar' => 'avatar'
+            'avatar' => 'avatar',
+            'category_id' => 'category',
+            'designation_id' => 'designation',
+            'discount' => 'discount',
+            'registration_tenure' => 'registration tenure',
+            'registration_details_title' => 'registration details',
+            'registration_details_file' => 'registration details'
+            
         ];
     }
 
-    // protected function failedValidation(Validator $validator) {
+    // protected function failedValidation(Validator $validator, Request $request) {
     //     throw new HttpResponseException(response()->json(['status' => false, 'message' => ['errors' => $validator->errors()]], 422));
     // }
 }

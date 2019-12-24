@@ -56,4 +56,8 @@ class User extends Authenticatable
         $countRows = count($rows) + 1;
         return ($countRows > 1) ? "{$slug}-{$countRows}" : $slug;
     }
+
+    public function vendor(){
+        return $this->belongsTo('App\Models\VendorDetail', 'id', 'user_id');
+    }
 }

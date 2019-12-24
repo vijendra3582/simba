@@ -35,6 +35,14 @@ Route::get('user/edit/{id}', ['uses' => 'Admin\UserController@edit', 'as' => 'ad
 Route::put('user/update', ['uses' => 'Admin\UserController@update', 'as' => 'admin.user.update']);
 Route::delete('user/delete/{id}', ['uses' => 'Admin\UserController@destroy', 'as' => 'admin.user.delete']);
 
+//Users Routes
+Route::get('vendors', ['uses' => 'Admin\VendorController@index', 'as' => 'admin.vendor']);
+Route::get('vendor/create', ['uses' => 'Admin\VendorController@create', 'as' => 'admin.vendor.create']);
+Route::post('vendor/store', ['uses' => 'Admin\VendorController@store', 'as' => 'admin.vendor.store']);
+Route::get('vendor/edit/{id}', ['uses' => 'Admin\VendorController@edit', 'as' => 'admin.vendor.edit']);
+Route::put('vendor/update', ['uses' => 'Admin\VendorController@update', 'as' => 'admin.vendor.update']);
+Route::delete('vendor/delete/{id}', ['uses' => 'Admin\VendorController@destroy', 'as' => 'admin.vendor.delete']);
+
 //Categories Routes
 Route::get('categories', ['uses' => 'Admin\CategoryController@index', 'as' => 'admin.category']);
 Route::get('category/create', ['uses' => 'Admin\CategoryController@create', 'as' => 'admin.category.create']);
@@ -66,5 +74,13 @@ Route::post('permission/store', ['uses' => 'Admin\PermissionController@store', '
 Route::get('permission/edit/{id}', ['uses' => 'Admin\PermissionController@edit', 'as' => 'admin.permission.edit']);
 Route::put('permission/update', ['uses' => 'Admin\PermissionController@update', 'as' => 'admin.permission.update']);
 Route::delete('permission/delete/{id}', ['uses' => 'Admin\PermissionController@destroy', 'as' => 'admin.permission.delete']);
+
+//Questions Routes
+Route::get('questions', ['uses' => 'Admin\SecurityQuestionController@index', 'as' => 'admin.question']);
+Route::get('question/create', ['uses' => 'Admin\SecurityQuestionController@create', 'as' => 'admin.question.create']);
+Route::post('question/store', ['uses' => 'Admin\SecurityQuestionController@store', 'as' => 'admin.question.store']);
+Route::get('question/edit/{id}', ['uses' => 'Admin\SecurityQuestionController@edit', 'as' => 'admin.question.edit']);
+Route::put('question/update', ['uses' => 'Admin\SecurityQuestionController@update', 'as' => 'admin.question.update']);
+Route::delete('question/delete/{id}', ['uses' => 'Admin\SecurityQuestionController@destroy', 'as' => 'admin.question.delete']);
 
 });

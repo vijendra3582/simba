@@ -18,8 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('user/security-questions', ['uses' => 'Api\CommonController@getSecurityQuestions', 'as' => 'get.security.question']);
+
 Route::post('user/register', ['uses' => 'Api\UserController@register', 'as' => 'user.register']);
 Route::post('user/login', ['uses' => 'Api\UserController@login', 'as' => 'user.login']);
-// Route::post('user/register', function(){
-//     echo "hhhhhhhhhhh";die;
-// });
+
+Route::get('vendor/categories', ['uses' => 'Api\CommonController@getCategories', 'as' => 'vendor.category']);
+Route::get('vendor/designations', ['uses' => 'Api\CommonController@getDesignations', 'as' => 'vendor.designation']);
+Route::post('vendor/register', ['uses' => 'Api\VendorController@register', 'as' => 'vendor.register']);
